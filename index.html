@@ -1,1 +1,700 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="YouTube Studio 2021 Layout - Nostalgic UI Recreation">
+    <meta name="author" content="4147s">
+    <title>YouTube Studio - 2021 Layout</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9f9f9;
+            color: #030303;
+        }
+        
+        /* Header Styles */
+        .header {
+            background-color: #fff;
+            border-bottom: 1px solid #e8e8e8;
+            padding: 0 20px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #FF0000, #FF6B6B);
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .search-container {
+            display: flex;
+            align-items: center;
+            background-color: #f0f0f0;
+            border-radius: 20px;
+            padding: 8px 16px;
+            min-width: 300px;
+        }
+        
+        .search-container input {
+            background: transparent;
+            border: none;
+            outline: none;
+            width: 100%;
+            font-size: 14px;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .header-icon-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            color: #030303;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s;
+        }
+        
+        .header-icon-btn:hover {
+            background-color: #f0f0f0;
+            border-radius: 50%;
+        }
+        
+        .profile-menu {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        /* Main Container */
+        .container {
+            display: flex;
+            height: calc(100vh - 56px);
+        }
+        
+        /* Sidebar Styles */
+        .sidebar {
+            width: 240px;
+            background-color: #fff;
+            border-right: 1px solid #e8e8e8;
+            padding: 16px 0;
+            overflow-y: auto;
+            position: sticky;
+            top: 56px;
+            height: calc(100vh - 56px);
+        }
+        
+        .sidebar-section {
+            margin-bottom: 8px;
+        }
+        
+        .sidebar-section-title {
+            font-size: 12px;
+            font-weight: 500;
+            color: #606060;
+            padding: 12px 24px 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .sidebar-item {
+            padding: 12px 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 14px;
+            color: #030303;
+            transition: background-color 0.2s;
+        }
+        
+        .sidebar-item:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .sidebar-item.active {
+            background-color: #f0f0f0;
+            color: #FF0000;
+            font-weight: 500;
+        }
+        
+        .sidebar-item i {
+            width: 24px;
+            text-align: center;
+            font-size: 18px;
+        }
+        
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            overflow-y: auto;
+            background-color: #f9f9f9;
+        }
+        
+        .content-header {
+            background-color: #fff;
+            padding: 24px;
+            border-bottom: 1px solid #e8e8e8;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .content-header h1 {
+            font-size: 28px;
+            font-weight: 400;
+        }
+        
+        .content-actions {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .btn {
+            padding: 10px 24px;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .btn-primary {
+            background-color: #FF0000;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #CC0000;
+        }
+        
+        .btn-secondary {
+            background-color: #f0f0f0;
+            color: #030303;
+            border: 1px solid #e8e8e8;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e8e8e8;
+        }
+        
+        /* Dashboard Content */
+        .dashboard {
+            padding: 24px;
+        }
+        
+        .dashboard-section {
+            margin-bottom: 32px;
+        }
+        
+        .section-title {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            color: #030303;
+        }
+        
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .card {
+            background-color: #fff;
+            border: 1px solid #e8e8e8;
+            border-radius: 2px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .card:hover {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-color: #d0d0d0;
+        }
+        
+        .card-icon {
+            font-size: 32px;
+            color: #FF0000;
+            margin-bottom: 12px;
+        }
+        
+        .card-title {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .card-description {
+            font-size: 12px;
+            color: #606060;
+            line-height: 1.4;
+        }
+        
+        /* Stats Section */
+        .stats-container {
+            background-color: #fff;
+            border: 1px solid #e8e8e8;
+            border-radius: 2px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 32px;
+            font-weight: 500;
+            color: #030303;
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #606060;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Table Styles */
+        .table-container {
+            background-color: #fff;
+            border: 1px solid #e8e8e8;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th {
+            background-color: #f9f9f9;
+            padding: 16px;
+            text-align: left;
+            font-weight: 500;
+            font-size: 12px;
+            color: #606060;
+            border-bottom: 1px solid #e8e8e8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        td {
+            padding: 16px;
+            border-bottom: 1px solid #e8e8e8;
+            font-size: 14px;
+        }
+        
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                top: 0;
+                border-right: none;
+                border-bottom: 1px solid #e8e8e8;
+                display: flex;
+                overflow-x: auto;
+                padding: 0;
+            }
+            
+            .sidebar-section {
+                display: flex;
+                align-items: center;
+                margin-bottom: 0;
+                border-right: 1px solid #e8e8e8;
+            }
+            
+            .sidebar-section-title {
+                display: none;
+            }
+            
+            .sidebar-item {
+                padding: 12px 16px;
+                border-right: 1px solid #e8e8e8;
+                white-space: nowrap;
+                gap: 8px;
+            }
+            
+            .card-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .search-container {
+                min-width: 200px;
+            }
+            
+            .content-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+        }
+        
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #d0d0d0;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b0b0b0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-left">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-play"></i>
+                </div>
+                <span>YouTube Studio</span>
+            </div>
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search your channel">
+            </div>
+        </div>
+        <div class="header-right">
+            <button class="header-icon-btn" title="Create">
+                <i class="fas fa-plus"></i>
+            </button>
+            <button class="header-icon-btn" title="Notifications">
+                <i class="fas fa-bell"></i>
+            </button>
+            <button class="header-icon-btn" title="Settings">
+                <i class="fas fa-cog"></i>
+            </button>
+            <div class="profile-menu" title="Profile Menu">Y</div>
+        </div>
+    </div>
+    
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">MENU</div>
+                <div class="sidebar-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </div>
+                <div class="sidebar-item">
+                    <i class="fas fa-video"></i>
+                    <span>Videos</span>
+                </div>
+                <div class="sidebar-item">
+                    <i class="fas fa-play-circle"></i>
+                    <span>Live</span>
+                </div>
+                <div class="sidebar-item">
+                    <i class="fas fa-comments"></i>
+                    <span>Comments</span>
+                </div>
+            </div>
+            
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">MONETIZATION</div>
+                <div class="sidebar-item">
+                    <i class="fas fa-dollar-sign"></i>
+                    <span>Revenue</span>
+                </div>
+                <div class="sidebar-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Monetization</span>
+                </div>
+            </div>
+            
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">GROWTH</div>
+                <div class="sidebar-item">
+                    <i class="fas fa-users"></i>
+                    <span>Audience</span>
+                </div>
+                <div class="sidebar-item">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Audience insights</span>
+                </div>
+            </div>
+            
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">TOOLS & SETTINGS</div>
+                <div class="sidebar-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Messages</span>
+                </div>
+                <div class="sidebar-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </div>
+                <div class="sidebar-item">
+                    <i class="fas fa-undo"></i>
+                    <span>Restore classic</span>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Content Header -->
+            <div class="content-header">
+                <div>
+                    <h1>Dashboard</h1>
+                </div>
+                <div class="content-actions">
+                    <button class="btn btn-secondary">Go Live</button>
+                    <button class="btn btn-primary">Upload Video</button>
+                </div>
+            </div>
+            
+            <!-- Dashboard Content -->
+            <div class="dashboard">
+                <!-- Quick Stats Section -->
+                <div class="dashboard-section">
+                    <h2 class="section-title">Recent Performance</h2>
+                    <div class="stats-container">
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-value">1.2M</div>
+                                <div class="stat-label">Views</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">45K</div>
+                                <div class="stat-label">Watch Time</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">2.3K</div>
+                                <div class="stat-label">Subscribers</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">890</div>
+                                <div class="stat-label">Revenue</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Actions -->
+                <div class="dashboard-section">
+                    <h2 class="section-title">Quick Actions</h2>
+                    <div class="card-grid">
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-film"></i>
+                            </div>
+                            <div class="card-title">Upload a Video</div>
+                            <div class="card-description">Share your content with your audience</div>
+                        </div>
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-circle"></i>
+                            </div>
+                            <div class="card-title">Go Live</div>
+                            <div class="card-description">Stream to your subscribers right now</div>
+                        </div>
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-pen"></i>
+                            </div>
+                            <div class="card-title">Create Post</div>
+                            <div class="card-description">Share updates with your community</div>
+                        </div>
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="card-title">Message Subscribers</div>
+                            <div class="card-description">Send messages to your community</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recent Videos -->
+                <div class="dashboard-section">
+                    <h2 class="section-title">Recent Videos</h2>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Video Title</th>
+                                    <th>Views</th>
+                                    <th>Watch Time (hours)</th>
+                                    <th>Comments</th>
+                                    <th>Likes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>How to use YouTube Studio 2021</strong></td>
+                                    <td>125,430</td>
+                                    <td>4,210</td>
+                                    <td>284</td>
+                                    <td>1,204</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>The Best Features You're Missing</strong></td>
+                                    <td>98,560</td>
+                                    <td>3,450</td>
+                                    <td>156</td>
+                                    <td>892</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Monetization Tips & Tricks</strong></td>
+                                    <td>67,890</td>
+                                    <td>2,340</td>
+                                    <td>98</td>
+                                    <td>654</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Growing Your Channel in 2021</strong></td>
+                                    <td>54,320</td>
+                                    <td>1,890</td>
+                                    <td>72</td>
+                                    <td>432</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Studio Update Overview</strong></td>
+                                    <td>42,100</td>
+                                    <td>1,450</td>
+                                    <td>45</td>
+                                    <td>298</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        // Sidebar item click handler
+        document.querySelectorAll('.sidebar-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+        
+        // Card click handler
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', function() {
+                alert('Action: ' + this.querySelector('.card-title').textContent);
+            });
+        });
+        
+        // Header buttons functionality
+        document.querySelectorAll('.header-icon-btn').forEach((btn, index) => {
+            btn.addEventListener('click', function() {
+                const titles = ['Create', 'Notifications', 'Settings'];
+                alert(titles[index] + ' clicked');
+            });
+        });
+        
+        // Profile menu
+        document.querySelector('.profile-menu').addEventListener('click', function() {
+            alert('Profile menu clicked');
+        });
+        
+        // Search functionality
+        document.querySelector('.search-container input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                alert('Search for: ' + this.value);
+            }
+        });
+    </script>
+</body>
+</html>
